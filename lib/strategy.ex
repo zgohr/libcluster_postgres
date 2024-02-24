@@ -92,7 +92,7 @@ defmodule LibclusterPostgres.Strategy do
 
       case Strategy.connect_nodes(topology, state.connect, state.list_nodes, [node]) do
         :ok -> Logger.debug(topology, "Connected to node: #{node}")
-        {:error, _} -> Logger.error(topology, "Failed to connect to node: #{node}")
+        {:error, e} -> Logger.error(topology, "Failed to connect to node: #{node} | #{inspect(e)}")
       end
     end
 
